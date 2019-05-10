@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nagarro.BookEvents.Shared.Functional.BusinessDomainComponents
+namespace Nagarro.BookEvents.Shared
 {
-    interface ICommentsBDC : IBusinessDomainComponent
+    public interface ICommentsBDC : IBusinessDomainComponent
     {
-        OperationResult<ICommentsDTO> GetComments(ICommentsDTO commentsDTO);
+        OperationResult<List<ICommentsDTO>> GetComments(ICommentsDTO commentsDTO);
         OperationResult<ICommentsDTO> CreateComments(ICommentsDTO commentsDTO);
         OperationResult<ICommentsDTO> DeleteComment(ICommentsDTO commentsDTO);
     }

@@ -19,5 +19,6 @@ namespace Nagarro.BookEvents.Shared
         int UserId { get; set; }
         int TotalInvites { get; set; }
         string Type { get; set; }
+        string InviteEmails { get; set; }
     }
 }
