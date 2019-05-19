@@ -12,5 +12,7 @@ namespace Nagarro.BookEvents.Shared
         int UserId { get; set; }
         int EventId { get; set; }
         string Comment { get; set; }
+        DateTime Date { get; set; }
+        string UserName { get; set; }
     }
 }

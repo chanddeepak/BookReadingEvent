@@ -13,6 +13,8 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="EventId" Type="int" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -22,7 +24,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Location" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
           <Property Name="DurationInHours" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="OtherDetails" Type="nvarchar" MaxLength="500" />
@@ -147,6 +149,8 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="EventId" Type="Int32" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Comments_Event" FromRole="Comments" ToRole="Event" />
           <NavigationProperty Name="User" Relationship="Self.FK_Comments_User" FromRole="Comments" ToRole="User" />
         </EntityType>
@@ -158,17 +162,17 @@
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="DurationInHours" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OtherDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="TotalInvites" Type="Int32" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InviteEmails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Event" FromRole="Event" ToRole="Comments" />
           <NavigationProperty Name="User" Relationship="Self.FK_Event_User" FromRole="Event" ToRole="User" />
           <NavigationProperty Name="Invite" Relationship="Self.FK_Invite_Event" FromRole="Event" ToRole="Invite" />
-          <Property Name="InviteEmails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Invite">
           <Key>
@@ -292,13 +296,14 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="EventId" ColumnName="EventId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Event">
             <EntityTypeMapping TypeName="BookReadingEventsDBModel.Event">
               <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="InviteEmails" ColumnName="InviteEmails" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -310,6 +315,7 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="TotalInvites" ColumnName="TotalInvites" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="InviteEmails" ColumnName="InviteEmails" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

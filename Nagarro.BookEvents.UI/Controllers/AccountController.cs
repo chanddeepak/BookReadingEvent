@@ -5,11 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Nagarro.BookEvents.UI.Models;
+using Nagarro.BookEvents.UI;
 using Nagarro.BookEvents.Shared;
 
 namespace Nagarro.BookEvents.UI.Controllers
 {
+  /// <summary>
+  /// 
+  /// </summary>
     public class AccountController : Controller
     {
         public ActionResult Index()
@@ -22,20 +25,23 @@ namespace Nagarro.BookEvents.UI.Controllers
         {
             return View();
         }
+
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="model"></param>
+       /// <returns></returns>
+
         [HttpPost]
         public ActionResult CreateUser(UserModel model)
         {
             if (ModelState.IsValid)
             {
-                UserDTO user = new UserDTO();
-                //ISampleDTO sampleDTO = (ISampleDTO)DTOFactory.Instance.Create(DTOType.SampleDTO);
-                user.Email = model.Email;
-                user.FullName = model.FullName;
-                user.Password = model.Password;
-                user.Role = "normal";
-
+                IUserDTO userDTO = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
+                EntityConverter.FillDTOFromEntity(model, userDTO);
+                userDTO.Role = "normal";
                 IUserFacade userFacade = (IUserFacade)FacadeFactory.Instance.Create(FacadeType.UserFacade);
-                OperationResult<IUserDTO> result = userFacade.CreateUser(user);
+                OperationResult<IUserDTO> result = userFacade.CreateUser(userDTO);
                 if (result.ResultType == OperationResultType.Failure)
                 {
                     ModelState.AddModelError("", result.Message);
@@ -43,35 +49,53 @@ namespace Nagarro.BookEvents.UI.Controllers
                 }
             }
             ModelState.Clear();
-            return View("LoginUser");
+            return RedirectToAction("LoginUser");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult LoginUser()
         {
             return View();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
 
         [HttpPost]
         public ActionResult LoginUser(UserModel model)
         {
             if (ModelState.IsValid)
             {
-                UserDTO user = new UserDTO();
-                //ISampleDTO sampleDTO = (ISampleDTO)DTOFactory.Instance.Create(DTOType.SampleDTO);
-                user.Email = model.Email;
-                user.Password = model.Password;
+                IUserDTO userDTO = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
+                EntityConverter.FillDTOFromEntity(model, userDTO);
                 IUserFacade userFacade = (IUserFacade)FacadeFactory.Instance.Create(FacadeType.UserFacade);
-                OperationResult<IUserDTO> result = userFacade.LoginUser(user);
+                OperationResult<IUserDTO> result = userFacade.LoginUser(userDTO);
                 if (result.ResultType == OperationResultType.Failure)
                 {
                     ModelState.AddModelError("", result.Message);
                     return View();
                 }
+                if (result.IsValid())
+                {
+                    FormsAuthentication.SetAuthCookie(result.Data.FullName + "|" + result.Data.Id + "|" + result.Data.Role, false);
+                    return RedirectToAction("Index", "User");
+                }
+
             }
-            FormsAuthentication.SetAuthCookie(model.FullName, false);
-            return RedirectToAction("Index", "User");
+            ModelState.AddModelError("",Constant.WrongEmailOrPassword);
+            return View();
+           
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

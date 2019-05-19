@@ -23,7 +23,7 @@ namespace Nagarro.BookEvents.DTOModel
         public string Location { get; set; }
 
         [EntityPropertyMapping(MappingDirectionType.Both, "StartTime")]
-        public TimeSpan StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
         [EntityPropertyMapping(MappingDirectionType.Both, "DurationInHours")]
         public int DurationInHours { get; set; }

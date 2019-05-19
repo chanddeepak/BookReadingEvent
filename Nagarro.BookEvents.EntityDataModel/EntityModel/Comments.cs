@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nagarro.BookEvents.EntityDataModel
+namespace Nagarro.BookEvents.EntityDataModel.EntityModel
 {
     using System;
     using System.Collections.Generic;
@@ -18,6 +18,8 @@ namespace Nagarro.BookEvents.EntityDataModel
         public int UserId { get; set; }
         public int EventId { get; set; }
         public string Comment { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string UserName { get; set; }
     
         public virtual Event Event { get; set; }
         public virtual User User { get; set; }

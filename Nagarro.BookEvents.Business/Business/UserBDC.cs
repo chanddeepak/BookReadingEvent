@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nagarro.BookEvents.Shared;
+using Nagarro.BookEvents.Validations;
 
 namespace Nagarro.BookEvents.Business
 {
@@ -19,6 +20,15 @@ namespace Nagarro.BookEvents.Business
             OperationResult<IUserDTO> retVal = null;
             try
             {
+
+                var result = Validator<UserValidation, IUserDTO>.Validate(userDTO);
+
+                if (!result.IsValid)
+                {
+                    retVal = OperationResult<IUserDTO>.CreateFailureResult(result.Errors[0].ErrorMessage);
+                    return retVal;
+                }
+
                 IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
                 IUserDTO resultDTO = userDAC.CreateUser(userDTO);
                 if (resultDTO != null)
@@ -27,7 +37,7 @@ namespace Nagarro.BookEvents.Business
                 }
                 else
                 {
-                    retVal = OperationResult<IUserDTO>.CreateFailureResult("Email id already exist");
+                    retVal = OperationResult<IUserDTO>.CreateFailureResult(Constant.UserFailureResult);
                 }
             }
             catch (DACException dacEx)
@@ -56,7 +66,7 @@ namespace Nagarro.BookEvents.Business
                 }
                 else
                 {
-                    retVal = OperationResult<IUserDTO>.CreateFailureResult("Invalid email or password");
+                    retVal = OperationResult<IUserDTO>.CreateFailureResult(Constant.LoginFailureresult);
                 }
             }
             catch (DACException dacEx)

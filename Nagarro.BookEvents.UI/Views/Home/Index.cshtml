@@ -1,25 +1,23 @@
-﻿<div class="jumbotron">
- 
-</div>
-
-<div class="row">
-    <div class="col-md-6">
-        <h2>Past Events</h2>
-        <ol>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        </ol>
+﻿<br/>
+<div class="container">
+    <br />
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <h1>Book Reading Events App</h1>
+            <p>Register to create your own events</p>
+        </div>
     </div>
-   
-    <div class="col-md-6">
-        <h2>Future Events</h2>
-        <ol>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        </ol>
+
+    <br/>
+    <div class="row">
+        <div class="col-md-6">
+            @{Html.RenderAction("UpcomingEvent");
+            }
+        </div>
+
+        <div class="col-md-6">
+            @{Html.RenderAction("PastEvent");
+            }
+        </div>
     </div>
 </div>

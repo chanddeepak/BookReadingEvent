@@ -1,8 +1,20 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/AfterLogin.cshtml";
+
 }
 
-<h2>Index</h2>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        @{Html.RenderAction("UpcomingEvent", "Home");
+        }
+    </div>
+
+    <div class="col-md-6">
+        @{Html.RenderAction("PastEvent", "Home");
+        }
+    </div>
+</div>
+
 

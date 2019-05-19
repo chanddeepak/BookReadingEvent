@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nagarro.BookEvents.EntityDataModel
+namespace Nagarro.BookEvents.EntityDataModel.EntityModel
 {
     using System;
     using System.Collections.Generic;

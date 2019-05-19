@@ -21,7 +21,7 @@ namespace Nagarro.BookEvents.BusinessFacades
             return eventBDC.CreateInvites(listOfInviteDetail);
         }
 
-        public OperationResult<List<IInvitesDTO>> GetInvites(IInvitesDTO invitesDTO)
+        public OperationResult<List<IEventDTO>> GetInvites(IInvitesDTO invitesDTO)
         {
             IInvitesBDC eventBDC = (IInvitesBDC)BDCFactory.Instance.Create(BDCType.InvitesBDC);
             return eventBDC.GetInvites(invitesDTO);

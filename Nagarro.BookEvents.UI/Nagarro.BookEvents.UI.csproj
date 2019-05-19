@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,16 +173,24 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\AfterLogin.cshtml" />
     <Content Include="Views\Account\CreateUser.cshtml" />
     <Content Include="Views\Account\LoginUser.cshtml" />
     <Content Include="Views\User\CreateEvent.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\MyEvents.cshtml" />
     <Content Include="Views\User\EventsInviteTo.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\EventDetail.cshtml" />
+    <Content Include="Views\User\EditEvent.cshtml" />
+    <Content Include="Views\Home\UpcomingEvent.cshtml" />
+    <Content Include="Views\Home\PastEvent.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Comment\CreateComment.cshtml" />
+    <Content Include="Views\Comment\GetComments.cshtml" />
+    <Content Include="Views\User\Events.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\CustomValidation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

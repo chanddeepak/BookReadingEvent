@@ -15,6 +15,7 @@ namespace Nagarro.BookEvents.Data
         {
 
         }
+
         public IUserDTO CreateUser(IUserDTO userDTO)
         {
             //It is only for illustrative purpose
@@ -22,22 +23,25 @@ namespace Nagarro.BookEvents.Data
 
             using (var context = new BookReadingEventsDBEntities())
             {
-                User user = new User()
-                {
-                    Email = userDTO.Email,
-                    Password = userDTO.Password,
-                    FullName = userDTO.FullName,
-                    Role = userDTO.Role
-                };
+                context.Database.Log = Logger.Log;
+                User user = new User();
+                EntityConverter.FillEntityFromDTO(userDTO, user);
+                string Password = user.Password;
+
+                string Encrypted = EncriptionAndDecription.Encrypt(Password, EncriptionAndDecription.EncryptionKey);
+                user.Password = Encrypted;
+
                 bool isExist = context.User.Any(u => u.Email == user.Email);
-                if(!isExist)
+
+
+                if (!isExist)
                 {
                     context.User.Add(user);
                     context.SaveChanges();
                     return userDTO;
                 }
 
-                return null;   
+                return null;
             }
         }
 
@@ -45,10 +49,15 @@ namespace Nagarro.BookEvents.Data
         {
             using (var context = new BookReadingEventsDBEntities())
             {
-                var IsValid = context.User.SingleOrDefault(u => u.Email == userDTO.Email && u.Password == userDTO.Password);
+                context.Database.Log = Logger.Log;
+                User user = context.User.SingleOrDefault(u => u.Email == userDTO.Email);
+                string Password = user.Password;
+                string Decrypted = EncriptionAndDecription.Decrypt(Password, EncriptionAndDecription.EncryptionKey);
+                var IsValid = context.User.SingleOrDefault(u => u.Email == userDTO.Email && Decrypted == userDTO.Password);
                 if (IsValid != null)
                 {
                     userDTO.FullName = IsValid.FullName;
+                    EntityConverter.FillDTOFromEntity(IsValid, userDTO);
                     return userDTO;
                 }
 
@@ -59,3 +68,4 @@ namespace Nagarro.BookEvents.Data
 
     }
 }
+                                                                   

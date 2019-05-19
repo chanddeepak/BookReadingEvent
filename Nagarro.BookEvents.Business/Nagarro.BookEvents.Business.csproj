@@ -80,6 +80,9 @@
     <Compile Include="Business\EventBDC.cs" />
     <Compile Include="Business\InvitesBDC.cs" />
     <Compile Include="Business\UserBDC.cs" />
+    <Compile Include="FluentValidation\EventValidation.cs" />
+    <Compile Include="FluentValidation\UserValidation.cs" />
+    <Compile Include="FluentValidation\UserValidationExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\ValidationExtensions.cs" />
     <Compile Include="Validations\Validator.cs" />

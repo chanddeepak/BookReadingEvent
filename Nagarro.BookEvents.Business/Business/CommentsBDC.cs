@@ -28,7 +28,7 @@ namespace Nagarro.BookEvents.Business
                 }
                 else
                 {
-                    retVal = OperationResult<ICommentsDTO>.CreateFailureResult("Email id already exist");
+                    retVal = OperationResult<ICommentsDTO>.CreateFailureResult(Constant.UserFailureResult);
                 }
             }
             catch (DACException dacEx)
@@ -44,30 +44,30 @@ namespace Nagarro.BookEvents.Business
             return retVal;
         }
 
-        public OperationResult<ICommentsDTO> DeleteComment(ICommentsDTO commentsDTO)
+        public OperationResult<bool> DeleteComment(ICommentsDTO commentsDTO)
         {
-            OperationResult<ICommentsDTO> retVal = null;
+            OperationResult<bool> retVal = null;
             try
             {
                 ICommentsDAC commentDAC = (ICommentsDAC)DACFactory.Instance.Create(DACType.CommentsDAC);
-                ICommentsDTO resultDTO = commentDAC.CreateComments(commentsDTO);
-                if (resultDTO != null)
+                bool resultDTO = commentDAC.DeleteComment(commentsDTO);
+                if (resultDTO)
                 {
-                    retVal = OperationResult<ICommentsDTO>.CreateSuccessResult(resultDTO);
+                    retVal = OperationResult<bool>.CreateSuccessResult(resultDTO);
                 }
                 else
                 {
-                    retVal = OperationResult<ICommentsDTO>.CreateFailureResult("Email id already exist");
+                    retVal = OperationResult<bool>.CreateFailureResult(Constant.UserFailureResult);
                 }
             }
             catch (DACException dacEx)
             {
-                retVal = OperationResult<ICommentsDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                retVal = OperationResult<bool>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                retVal = OperationResult<ICommentsDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                retVal = OperationResult<bool>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return retVal;
@@ -86,7 +86,7 @@ namespace Nagarro.BookEvents.Business
                 }
                 else
                 {
-                    retVal = OperationResult<List<ICommentsDTO>>.CreateFailureResult("Email id already exist");
+                    retVal = OperationResult<List<ICommentsDTO>>.CreateFailureResult(Constant.UserFailureResult);
                 }
             }
             catch (DACException dacEx)

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nagarro.BookEvents.EntityDataModel
+namespace Nagarro.BookEvents.EntityDataModel.EntityModel
 {
     using System;
     using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Nagarro.BookEvents.EntityDataModel
         public string Title { get; set; }
         public System.DateTime Date { get; set; }
         public string Location { get; set; }
-        public System.TimeSpan StartTime { get; set; }
+        public System.DateTime StartTime { get; set; }
         public Nullable<int> DurationInHours { get; set; }
         public string Description { get; set; }
         public string OtherDetails { get; set; }

@@ -35,12 +35,12 @@ namespace Nagarro.BookEvents.Data
             using (var context = new BookReadingEventsDBEntities())
             {
                 var deleteComment = context.Comments
-                    .Where(c => c.Id == commentsDTO.UserId)
-                    .SingleOrDefault();
+                    .SingleOrDefault(c => c.Id == commentsDTO.Id);
                 bool result = false;
                 if (deleteComment != null)
                 {
                     context.Comments.Remove(deleteComment);
+                    context.SaveChanges();
                     result = true;
                 }
                 return result;
@@ -61,8 +61,9 @@ namespace Nagarro.BookEvents.Data
 
                     foreach (var comment in commentsEntityList)
                     {
-                        EntityConverter.FillDTOFromEntity(comment, commentsDTO);
-                        listOfComments.Add(commentsDTO);
+                        ICommentsDTO commentDTO = (ICommentsDTO)DTOFactory.Instance.Create(DTOType.CommentsDTO);
+                        EntityConverter.FillDTOFromEntity(comment, commentDTO);
+                        listOfComments.Add(commentDTO);
                     }
 
                 }

@@ -50,48 +50,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookReadingEvent.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookReadingEvent.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookReadingEvent.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookReadingEvent.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BookReadingEvent.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookReadingEvent.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Comments.cs">
-      <DependentUpon>BookReadingEvent.tt</DependentUpon>
-    </Compile>
     <Compile Include="Converter\EntityConverter.cs" />
+    <Compile Include="EntityModel\BookReadingEventDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookReadingEventDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\BookReadingEventDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookReadingEventDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\BookReadingEventDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookReadingEventDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\Comments.cs">
+      <DependentUpon>BookReadingEventDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\ContextClass.cs" />
+    <Compile Include="EntityModel\Event.cs">
+      <DependentUpon>BookReadingEventDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\Invite.cs">
+      <DependentUpon>BookReadingEventDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\Sample.cs" />
+    <Compile Include="EntityModel\User.cs">
+      <DependentUpon>BookReadingEventDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\UserModels.cs" />
-    <Compile Include="Event.cs">
-      <DependentUpon>BookReadingEvent.tt</DependentUpon>
-    </Compile>
     <Compile Include="Exception\EntityConversionException.cs" />
-    <Compile Include="Invite.cs">
-      <DependentUpon>BookReadingEvent.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs">
-      <DependentUpon>BookReadingEvent.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="BookReadingEvent.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookReadingEvent.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="BookReadingEvent.edmx.diagram">
-      <DependentUpon>BookReadingEvent.edmx</DependentUpon>
+    <EntityDeploy Include="EntityModel\BookReadingEventDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BookReadingEventDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityModel\BookReadingEventDB.edmx.diagram">
+      <DependentUpon>BookReadingEventDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -105,15 +105,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BookReadingEvent.Context.tt">
+    <Content Include="EntityModel\BookReadingEventDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookReadingEvent.edmx</DependentUpon>
-      <LastGenOutput>BookReadingEvent.Context.cs</LastGenOutput>
+      <DependentUpon>BookReadingEventDB.edmx</DependentUpon>
+      <LastGenOutput>BookReadingEventDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BookReadingEvent.tt">
+    <Content Include="EntityModel\BookReadingEventDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookReadingEvent.edmx</DependentUpon>
-      <LastGenOutput>BookReadingEvent.cs</LastGenOutput>
+      <DependentUpon>BookReadingEventDB.edmx</DependentUpon>
+      <LastGenOutput>BookReadingEventDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

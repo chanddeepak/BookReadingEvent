@@ -12,7 +12,7 @@ namespace Nagarro.BookEvents.Shared
         string Title { get; set; }
         DateTime Date { get; set; }
         string Location { get; set; }
-        TimeSpan StartTime { get; set; }
+        DateTime StartTime { get; set; }
         int DurationInHours { get; set; }
         string Description { get; set; }
         string OtherDetails { get; set; }

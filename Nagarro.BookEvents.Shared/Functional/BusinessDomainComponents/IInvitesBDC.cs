@@ -8,7 +8,7 @@ namespace Nagarro.BookEvents.Shared
 {
     public interface IInvitesBDC : IBusinessDomainComponent
     {
-        OperationResult<List<IInvitesDTO>> GetInvites(IInvitesDTO invitesDTO);
+        OperationResult<List<IEventDTO>> GetInvites(IInvitesDTO invitesDTO);
         OperationResult<IInvitesDTO> CreateInvites(List<IInvitesDTO> listOfInviteDetail);
     }
 }

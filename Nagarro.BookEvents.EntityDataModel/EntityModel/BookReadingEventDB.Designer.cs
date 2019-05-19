@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Nagarro.BookEvents\Nagarro.BookEvents\Nagarro.BookEvents.EntityDataModel\BookReadingEvent.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Training\MVC\MVCFinalProject\Nagarro.BookEvents\Nagarro.BookEvents.EntityDataModel\EntityModel\BookReadingEventDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

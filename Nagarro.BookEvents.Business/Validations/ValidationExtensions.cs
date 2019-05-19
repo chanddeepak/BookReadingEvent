@@ -10,21 +10,21 @@ namespace Nagarro.BookEvents.Validations
 {
     public static class ValidationExtensions
     {
-        public static NagarroElectronicsValidationResult ToValidationResult(this ValidationResult result)
+        public static NagarroBookEventValidationResult ToValidationResult(this ValidationResult result)
         {
-            IList<NagarroElectronicsValidationFailure> errors = new List<NagarroElectronicsValidationFailure>();
+            IList<NagarroBookEventValidationFailure> errors = new List<NagarroBookEventValidationFailure>();
 
             foreach (ValidationFailure failure in result.Errors)
             {
                 errors.Add(failure.ToValidationFailure());
             }
 
-            return new NagarroElectronicsValidationResult(errors);
+            return new NagarroBookEventValidationResult(errors);
         }
 
-        public static NagarroElectronicsValidationFailure ToValidationFailure(this ValidationFailure failure)
+        public static NagarroBookEventValidationFailure ToValidationFailure(this ValidationFailure failure)
         {
-            return new NagarroElectronicsValidationFailure(failure.PropertyName, failure.ErrorMessage, failure.AttemptedValue);
+            return new NagarroBookEventValidationFailure(failure.PropertyName, failure.ErrorMessage, failure.AttemptedValue);
         }
 
     }

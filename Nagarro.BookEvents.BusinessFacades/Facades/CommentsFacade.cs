@@ -21,7 +21,7 @@ namespace Nagarro.BookEvents.BusinessFacades
             return commentBDC.CreateComments(commentsDTO);
         }
 
-        public OperationResult<ICommentsDTO> DeleteComment(ICommentsDTO commentsDTO)
+        public OperationResult<bool> DeleteComment(ICommentsDTO commentsDTO)
         {
             ICommentsBDC commentBDC = (ICommentsBDC)BDCFactory.Instance.Create(BDCType.CommentsBDC);
             return commentBDC.DeleteComment(commentsDTO);

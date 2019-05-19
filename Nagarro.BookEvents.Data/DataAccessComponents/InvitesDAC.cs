@@ -12,18 +12,17 @@ namespace Nagarro.BookEvents.Data
     {
         public InvitesDAC()
             : base(DACType.InvitesDAC)
-        {
-
-        }
+        { }
 
         public IInvitesDTO CreateInvites(List<IInvitesDTO> listOfInviteDetail)
         {
+
             using (var context = new BookReadingEventsDBEntities())
             {
-                Invite newInvite = new Invite();
-
+                context.Database.Log = Logger.Log;
                 foreach (IInvitesDTO inviteDetail in listOfInviteDetail)
                 {
+                    Invite newInvite = new Invite();
                     EntityConverter.FillEntityFromDTO(inviteDetail, newInvite);
                     context.Invite.Add(newInvite);
                 } 
@@ -33,21 +32,33 @@ namespace Nagarro.BookEvents.Data
             }
         }
 
-        public List<IInvitesDTO> GetInvites(IInvitesDTO invitesDTO)
+        public List<IEventDTO> GetInvites(IInvitesDTO invitesDTO)
         {
             using (var context = new BookReadingEventsDBEntities())
             {
-                List<IInvitesDTO> listOfInvites = null;
-                var invitesEntityList = context.Invite.Where(i => i.UserId == invitesDTO.UserId).ToList();
+                context.Database.Log = Logger.Log;
+                List<IEventDTO> listOfInvites = null;
+                Event eventModel = new Event();
+                Invite inviteModel = new Invite();
+                var invitesEntityList = context.Invite.Where(i => i.UserId == invitesDTO.UserId).
+                    GroupJoin(context.Event,
+                    i => i.EventId, e => e.Id, (i, eve) => new
+                    {
+                        eventDetail = eve
+                    });
 
                 if (invitesEntityList != null)
                 {
-                    listOfInvites = new List<IInvitesDTO>();
+                    listOfInvites = new List<IEventDTO>();
 
                     foreach (var invite in invitesEntityList)
                     {
-                        EntityConverter.FillDTOFromEntity(invite, invitesDTO);
-                        listOfInvites.Add(invitesDTO);
+                        if (invite.eventDetail.ElementAt(0).Type != "Private")
+                        {
+                            IEventDTO eventDTO = (IEventDTO)DTOFactory.Instance.Create(DTOType.EventDTO);
+                            EntityConverter.FillDTOFromEntity(invite.eventDetail.ElementAt(0), eventDTO);
+                            listOfInvites.Add(eventDTO);
+                        }
                     }
 
                 }

@@ -52,10 +52,10 @@
     <Compile Include="DataAccessComponents\EventDAC.cs" />
     <Compile Include="DataAccessComponents\InvitesDAC.cs" />
     <Compile Include="DataAccessComponents\UserDAC.cs" />
+    <Compile Include="EncriptionAndDecripton\EncriptionAndDecription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

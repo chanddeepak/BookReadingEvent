@@ -28,7 +28,7 @@ namespace Nagarro.BookEvents.Business
                 }
                 else
                 {
-                    retVal = OperationResult<IInvitesDTO>.CreateFailureResult("Email id already exist");
+                    retVal = OperationResult<IInvitesDTO>.CreateFailureResult(Constant.UserFailureResult);
                 }
             }
             catch (DACException dacEx)
@@ -44,30 +44,30 @@ namespace Nagarro.BookEvents.Business
             return retVal;
         }
 
-        public OperationResult<List<IInvitesDTO>> GetInvites(IInvitesDTO invitesDTO)
+        public OperationResult<List<IEventDTO>> GetInvites(IInvitesDTO invitesDTO)
         {
-            OperationResult<List<IInvitesDTO>> retVal = null;
+            OperationResult<List<IEventDTO>> retVal = null;
             try
             {
                 IInvitesDAC invitesDAC = (IInvitesDAC)DACFactory.Instance.Create(DACType.InvitesDAC);
-                List<IInvitesDTO> resultDTO = invitesDAC.GetInvites(invitesDTO);
+                List<IEventDTO> resultDTO = invitesDAC.GetInvites(invitesDTO);
                 if (resultDTO != null)
                 {
-                    retVal = OperationResult<List<IInvitesDTO>>.CreateSuccessResult(resultDTO);
+                    retVal = OperationResult<List<IEventDTO>>.CreateSuccessResult(resultDTO);
                 }
                 else
                 {
-                    retVal = OperationResult<List<IInvitesDTO>>.CreateFailureResult("Email id already exist");
+                    retVal = OperationResult<List<IEventDTO>>.CreateFailureResult(Constant.UserFailureResult);
                 }
             }
             catch (DACException dacEx)
             {
-                retVal = OperationResult<List<IInvitesDTO>>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                retVal = OperationResult<List<IEventDTO>>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                retVal = OperationResult<List<IInvitesDTO>>.CreateErrorResult(ex.Message, ex.StackTrace);
+                retVal = OperationResult<List<IEventDTO>>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return retVal;

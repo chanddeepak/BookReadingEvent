@@ -8,7 +8,7 @@ namespace Nagarro.BookEvents.Shared
 {
     public interface IInvitesDAC : IDataAccessComponent
     {
-        List<IInvitesDTO> GetInvites(IInvitesDTO inviteDTO);
+        List<IEventDTO> GetInvites(IInvitesDTO inviteDTO);
         IInvitesDTO CreateInvites(List<IInvitesDTO> listOfInviteDetail);
     }
 }

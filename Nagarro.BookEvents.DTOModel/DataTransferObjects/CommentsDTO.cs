@@ -22,6 +22,11 @@ namespace Nagarro.BookEvents.DTOModel
         [EntityPropertyMapping(MappingDirectionType.Both, "Comment")]
         public string Comment { get; set; }
 
+        [EntityPropertyMapping(MappingDirectionType.Both, "Date")]
+        public DateTime Date { get; set; }
+
+        [EntityPropertyMapping(MappingDirectionType.Both, "UserName")]
+        public string UserName { get; set; }
 
     }
 }

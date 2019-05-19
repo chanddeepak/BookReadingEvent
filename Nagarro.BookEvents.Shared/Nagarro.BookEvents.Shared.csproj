@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant\Constant.cs" />
     <Compile Include="Functional\BusinessDomainComponents\ICommentsBDC.cs" />
     <Compile Include="Functional\BusinessDomainComponents\IEventBDC.cs" />
     <Compile Include="Functional\BusinessDomainComponents\IInvitesBDC.cs" />
@@ -89,8 +90,8 @@
     <Compile Include="Infrastructure\Common\Utilities\EnumAttributeUtility.cs" />
     <Compile Include="Infrastructure\Common\Utilities\ResourceUtility.cs" />
     <Compile Include="Infrastructure\Common\Utilities\ValidatorUtility.cs" />
-    <Compile Include="Infrastructure\Common\Validations\NagarroElectronicsValidationFailure.cs" />
-    <Compile Include="Infrastructure\Common\Validations\NagarroElectronicsValidationResult.cs" />
+    <Compile Include="Infrastructure\Common\Validations\NagarroBookEventValidationFailure.cs" />
+    <Compile Include="Infrastructure\Common\Validations\NagarroBookEventValidationResult.cs" />
     <Compile Include="Infrastructure\DAC\DACBase.cs" />
     <Compile Include="Infrastructure\DAC\DACFactory.cs" />
     <Compile Include="Infrastructure\DAC\IDACFactory.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Infrastructure\Facades\FacadeFactory.cs" />
     <Compile Include="Infrastructure\Facades\IFacade.cs" />
     <Compile Include="Infrastructure\Facades\IFacadeFactory.cs" />
+    <Compile Include="Interceptor\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

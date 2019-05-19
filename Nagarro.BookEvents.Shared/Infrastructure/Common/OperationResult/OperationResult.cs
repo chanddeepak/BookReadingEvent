@@ -63,7 +63,7 @@ namespace Nagarro.BookEvents.Shared
         /// Gets or sets the validation result.
         /// </summary>
         /// <value>The JCC validation result.</value>
-        public NagarroElectronicsValidationResult ValidationResult { get; private set; }
+        public NagarroBookEventValidationResult ValidationResult { get; private set; }
 
         #region Ctor
 
@@ -74,7 +74,7 @@ namespace Nagarro.BookEvents.Shared
         /// <param name="resultType">Type of the result.</param>
         /// <param name="message">The message.</param>
         /// <param name="stackTrace">The stack trace.</param>
-        private OperationResult(T data, OperationResultType resultType, string message, string stackTrace, NagarroElectronicsValidationResult validationResult)
+        private OperationResult(T data, OperationResultType resultType, string message, string stackTrace, NagarroBookEventValidationResult validationResult)
         {
             this.Data = data;
             this.ResultType = resultType;
@@ -189,7 +189,7 @@ namespace Nagarro.BookEvents.Shared
         /// <param name="errorCode">The validation error code.</param>
         /// <returns></returns>
         [SuppressMessage(SuppressMessageConstants.DesignCategory, SuppressMessageConstants.DoNotDeclareStaticMembersOnGenericTypes)]
-        public static OperationResult<T> CreateFailureResult(NagarroElectronicsValidationResult validationResult)
+        public static OperationResult<T> CreateFailureResult(NagarroBookEventValidationResult validationResult)
         {
             return new OperationResult<T>(default(T), OperationResultType.Failure, string.Empty, string.Empty, validationResult);
         }

@@ -10,6 +10,6 @@ namespace Nagarro.BookEvents.Shared
     {
         OperationResult<List<ICommentsDTO>> GetComments(ICommentsDTO commentsDTO);
         OperationResult<ICommentsDTO> CreateComments(ICommentsDTO commentsDTO);
-        OperationResult<ICommentsDTO> DeleteComment(ICommentsDTO commentsDTO);
+        OperationResult<bool> DeleteComment(ICommentsDTO commentsDTO);
     }
 }

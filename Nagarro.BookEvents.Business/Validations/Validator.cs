@@ -10,13 +10,13 @@ namespace Nagarro.BookEvents.Validations
 {
     public static class Validator<T, T1> where T : AbstractValidator<T1>, new()
     {
-        public static NagarroElectronicsValidationResult Validate(T1 dto)
+        public static NagarroBookEventValidationResult Validate(T1 dto)
         {
             T validator = new T();
             return validator.Validate(dto).ToValidationResult();
         }
 
-        public static NagarroElectronicsValidationResult Validate(T1 dto, string ruleSet)
+        public static NagarroBookEventValidationResult Validate(T1 dto, string ruleSet)
         {
             T validator = new T();
             return validator.Validate(dto, ruleSet: ruleSet).ToValidationResult();

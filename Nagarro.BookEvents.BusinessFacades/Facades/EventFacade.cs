@@ -43,5 +43,23 @@ namespace Nagarro.BookEvents.BusinessFacades
             IEventBDC eventBDC = (IEventBDC)BDCFactory.Instance.Create(BDCType.EventBDC);
             return eventBDC.GetEvents(eventDTO);
         }
+
+        public OperationResult<List<IEventDTO>> GetPastEvents()
+        {
+            IEventBDC eventBDC = (IEventBDC)BDCFactory.Instance.Create(BDCType.EventBDC);
+            return eventBDC.GetPastEvents();
+        }
+
+        public OperationResult<List<IEventDTO>> GetFutureEvents()
+        {
+            IEventBDC eventBDC = (IEventBDC)BDCFactory.Instance.Create(BDCType.EventBDC);
+            return eventBDC.GetFutureEvents();
+        }
+
+        public OperationResult<List<IEventDTO>> Events(IEventDTO eventDTO)
+        {
+            IEventBDC eventBDC = (IEventBDC)BDCFactory.Instance.Create(BDCType.EventBDC);
+            return eventBDC.Events(eventDTO);
+        }
     }
 }
